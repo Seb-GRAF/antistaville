@@ -29,7 +29,7 @@ const Breadcrumbs = ({ crumbs }) => {
                 <p>
                   <span className='sm:hidden mr-2'>{'<'}</span>
                   <span className='mr-1'>{item}</span>
-                  <span className='hidden sm:visible'>{'>'}</span>
+                  <span className='hidden sm:inline-block'>{'>'}</span>
                 </p>
               </Link>
             </li>

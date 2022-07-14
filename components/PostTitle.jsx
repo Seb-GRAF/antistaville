@@ -20,6 +20,7 @@ const PostTitle = ({ postTitle }) => {
         <Image
           src={postTitle.image}
           alt={postTitle.imageAlt}
+          priority={true}
           layout='responsive'
           height={544}
           width={816}
