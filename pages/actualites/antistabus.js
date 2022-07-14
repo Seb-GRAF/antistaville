@@ -1,7 +1,16 @@
 import React from 'react'
+import { Seo } from '../../components'
 
-const antistabus = () => {
-  return <h1 className='text-blue-500'>Hello world</h1>
+const Antistabus = () => {
+  return (
+    <>
+      <Seo
+        title={"L'Antistabus : une ludothèque sur roues"}
+        description={"L'Antistabus : une ludothèque sur roues"}
+      />
+      <h1 className='text-blue-500'>Hello world</h1>
+    </>
+  )
 }
 
-export default antistabus
+export default Antistabus
