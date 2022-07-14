@@ -1,15 +1,21 @@
+![image](https://user-images.githubusercontent.com/95282692/178984621-cade132f-f76c-4347-b990-1e0cfd31d591.png)
+
+
 Mock page for Antistatique challenge, it was built using NextJS
 
 ## [Live Link](https://antistaville.vercel.app)
 
 ## Getting Started
 
-- Clone the file to local
+- Clone the file to your computer
+```bash
+gh repo clone Seb-GRAF/antistaville
+```
 
-- Instal dev dependencies:
+- Install dev dependencies:
 
 ```bash
-npm instal
+npm install
 ```
 
 - Run the local server:
