@@ -24,13 +24,13 @@ const Breadcrumbs = ({ crumbs }) => {
               </Link>
             </li>
           ) : (
-            <li className='flex mr-1'>
+            <li className='flex mr-1' key={`crumb-${index}`}>
               <Link href={`/${item}`} passHref>
-                <a>
+                <p>
                   <span className='sm:hidden mr-2'>{'<'}</span>
                   <span className='mr-1'>{item}</span>
                   <span className='hidden sm:visible'>{'>'}</span>
-                </a>
+                </p>
               </Link>
             </li>
           )
