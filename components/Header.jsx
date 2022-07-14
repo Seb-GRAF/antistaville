@@ -142,7 +142,7 @@ const Header = () => {
   const collapseHeader = () => {
     gsap.to('.header', {
       duration: 0.5,
-      height: '4.5rem',
+      height: '4rem',
       ease: 'power2.out',
     })
 
@@ -197,7 +197,7 @@ const Header = () => {
   }, [])
 
   return (
-    <header className='flex flex-col lg:flex-row items-between justify-center lg:justify-between header w-full max-w-6xl h-[4.5rem] overflow-hidden px-4'>
+    <header className='flex flex-col lg:flex-row items-between justify-center lg:justify-between header w-full max-w-6xl h-16 overflow-hidden px-4'>
       <div className='flex justify-between items-center'>
         {/* LOGO */}
         <Link href='/' passHref>
