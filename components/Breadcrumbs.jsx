@@ -19,9 +19,7 @@ const Breadcrumbs = ({ crumbs }) => {
             <li
               className='hidden sm:visible sm:flex mr-2'
               key={`crumb-${index}`}>
-              <Link href='/' passHref>
-                <p aria-current='page'>{item}</p>
-              </Link>
+              <p aria-current='page'>{item}</p>
             </li>
           ) : (
             <li className='flex mr-2' key={`crumb-${index}`}>

@@ -16,7 +16,7 @@ const PostTitle = ({ postTitle }) => {
         Publié le <time dateTime='06.04.2022'>{postTitle.publishedAt}</time> ·
         Mis à jour le <time dateTime='08.04.2022'>{postTitle.updatedAt}</time>
       </p>
-      <figure className='lg:mb-10 lg:w-[130%] lg:-translate-x-[15%]'>
+      <figure className='lg:mb-10 lg:w-[130%] lg:-translate-x-[11%]'>
         <Image
           src={postTitle.image}
           alt={postTitle.imageAlt}

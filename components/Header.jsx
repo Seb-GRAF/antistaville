@@ -1,5 +1,6 @@
 import React from 'react'
 import { useState, useEffect } from 'react'
+import { useRouter } from 'next/router'
 import Image from 'next/image'
 import Link from 'next/link'
 import Button from './Button'
@@ -45,30 +46,63 @@ const HamburgerIcon = ({ isNavOpen, toggleNav }) => {
 }
 
 const Nav = () => {
+  const [currentRoute, setCurrentRoute] = useState('/')
+  const router = useRouter()
+
+  useEffect(() => {
+    const pathWithoutQuery = router.asPath.split('?')[0]
+
+    const nestedRoutes = pathWithoutQuery
+      .split('/')
+      .filter((route) => route.length > 0)
+
+    setCurrentRoute(nestedRoutes[0])
+  }, [])
+
   const linkStyle =
     'font-semibold lg:font-normal  mb-2 lg:mb-0 text-2xl lg:text-base border-t-2 lg:border-none py-2 lg:py-0 lg:hover:underline lg:hover:underline-offset-4'
+  const activeStyle = 'lg:underline lg:underline-offset-4'
+
   return (
     <nav className='nav hidden lg:flex lg:gap-4 lg:items-center lg:justify-center w-full lg:w-fit h-full overflow-hidden'>
-      <div className={linkStyle}>
-        <Link href='/'>Administration et autorités</Link>
+      <div
+        className={`${linkStyle} ${
+          currentRoute == 'administration-et-autorites' ? activeStyle : null
+        }
+        `}>
+        <Link href='/administration'>Administration et autorités</Link>
       </div>
-      <div className={linkStyle}>
-        <Link href='/'>Vie pratique</Link>
+      <div
+        className={`${linkStyle} ${
+          currentRoute == 'vie-pratique' ? activeStyle : null
+        }
+        `}>
+        <Link href='/vie-pratique'>Vie pratique</Link>
       </div>
-      <div className={linkStyle}>
-        <Link href='/'>Culture, sport et loisirs</Link>
+      <div
+        className={`${linkStyle} ${
+          currentRoute == 'culture-sport-loisirs' ? activeStyle : null
+        }
+        `}>
+        <Link href='/culture-sport-loisirs'>Culture, sport et loisirs</Link>
       </div>
-      <div className={linkStyle}>
-        <Link href='/'>Agenda</Link>
+      <div
+        className={`${linkStyle} ${
+          currentRoute == 'agenda' ? activeStyle : null
+        }`}>
+        <Link href='/agenda'>Agenda</Link>
       </div>
-      <div className={linkStyle}>
-        <Link href='/'>Actualités</Link>
+      <div
+        className={`${linkStyle} ${
+          currentRoute == 'actualites' ? activeStyle : null
+        }`}>
+        <Link href='/actualites'>Actualités</Link>
       </div>
-      <div className={`lg:hidden ${linkStyle}`}>
-        <Link href='/'>Guichet</Link>
-      </div>
-      <div className='hidden lg:inline-block'>
-        <Button>Guichet</Button>
+      <div
+        className={`lg:hidden border-b-2 ${linkStyle} ${
+          currentRoute == 'guichet' ? activeStyle : null
+        }`}>
+        <Link href='/guichet'>Guichet</Link>
       </div>
     </nav>
   )
@@ -108,7 +142,7 @@ const Header = () => {
   const collapseHeader = () => {
     gsap.to('.header', {
       duration: 0.5,
-      height: '4rem',
+      height: '4.5rem',
       ease: 'power2.out',
     })
 
@@ -124,7 +158,7 @@ const Header = () => {
       nav.classList.remove('hidden')
       search.classList.add('hidden')
       setIsSearchOpen(false)
-      expandHeader('25rem')
+      expandHeader('27rem')
     } else {
       collapseHeader()
     }
@@ -163,18 +197,20 @@ const Header = () => {
   }, [])
 
   return (
-    <header className='flex flex-col lg:flex-row items-between justify-center lg:justify-between header w-full max-w-6xl h-16 overflow-hidden px-4'>
+    <header className='flex flex-col lg:flex-row items-between justify-center lg:justify-between header w-full max-w-6xl h-[4.5rem] overflow-hidden px-4'>
       <div className='flex justify-between items-center'>
         {/* LOGO */}
-        <div className='flex items-center'>
-          <h1 className='sr-only'>Antistaville</h1>
-          <Image
-            src='/antistaville.svg'
-            alt='Logo de Antistaville'
-            height='20'
-            width='128'
-          />
-        </div>
+        <Link href='/' passHref>
+          <a className='flex items-center'>
+            <h1 className='sr-only'>Antistaville</h1>
+            <Image
+              src='/antistaville.svg'
+              alt='Logo de Antistaville'
+              height='20'
+              width='128'
+            />
+          </a>
+        </Link>
 
         {/* MOBILE NAV BUTTONS */}
         <div className='flex items-center h-16 lg:hidden'>
@@ -185,6 +221,29 @@ const Header = () => {
 
       <Search />
       <Nav />
+      <div className='hidden lg:flex lg:items-center lg:justify-center'>
+        {/* SEARCH ICON */}
+        <div className='relative h-12 w-12 flex items-center justify-center overflow-hidden hover:overflow-visible'>
+          <form action='/' className='absolute right-full w-64'>
+            <input
+              type='text'
+              name='search'
+              id='search'
+              placeholder='Rechercher du contenu'
+              className='w-full py-2 px-4 bg-gray-100 rounded-lg border-2 border-gray-200'
+            />
+            <button type='submit' className='sr-only'>
+              Rechercher
+            </button>
+          </form>
+          <button className='h-12 w-12 group-hover:overflow-auto'>
+            <Image src='/search-icon.svg' alt='' width='24' height='24' />
+          </button>
+        </div>
+
+        {/* GUICHET BUTTON */}
+        <Button>Guichet</Button>
+      </div>
     </header>
   )
 }
