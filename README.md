@@ -5,7 +5,7 @@
 Mock page for Antistatique challenge, it was built using NextJS
 
 ### [Live Link (without fixes)](https://antistaville.vercel.app)
-### [Live Link (with fixes)](https://antistaville.vercel.app)
+### [Live Link (with fixes)](https://antistaville-git-after-completion-seb-graf.vercel.app/actualites/antistabus)
 
 If you want to see the code for the updated version with fixes, check out the after-completion branch.
 
