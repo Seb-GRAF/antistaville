@@ -1,15 +1,16 @@
-![image](https://user-images.githubusercontent.com/95282692/178984621-cade132f-f76c-4347-b990-1e0cfd31d591.png)
+![image](https://user-images.githubusercontent.com/95282692/179057832-f7545f7f-25ca-4868-8e57-bc61f6fd2e2a.png)
+
 
 
 Mock page for Antistatique challenge, it was built using NextJS
 
-## [Live Link](https://antistaville.vercel.app)
+### [Live Link (without fixes)](https://antistaville.vercel.app)
+### [Live Link (with fixes)](https://antistaville.vercel.app)
 
-If you want to see the updated version with fixes, check out the after-completion branch. It took around an hour to fix.</br>
-[version with fixes](https://antistaville-git-after-completion-seb-graf.vercel.app)
+If you want to see the code for the updated version with fixes, check out the after-completion branch.
 
 
-## Getting Started
+## Running the code
 
 - Clone the file to your computer
 ```bash
@@ -28,4 +29,4 @@ npm install
 npm run dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the site.
+- Open [http://localhost:3000](http://localhost:3000) with your browser to see the site.
