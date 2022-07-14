@@ -3,12 +3,12 @@ import Link from 'next/link'
 
 const Breadcrumbs = ({ crumbs }) => {
   return (
-    <nav>
+    <nav className='self-start'>
       <ul className='flex text-gray-700'>
-        <li className='hidden sm:visible sm:flex mr-1'>
+        <li className='hidden sm:visible sm:flex mr-2'>
           <Link href='/' passHref>
             <a>
-              <span className='mr-1'>Accueil</span>
+              <span className='mr-2'>Accueil</span>
               <span className=''>{'>'}</span>
             </a>
           </Link>
@@ -17,20 +17,20 @@ const Breadcrumbs = ({ crumbs }) => {
         {crumbs.map((item, index) => {
           return index === crumbs.length - 1 ? (
             <li
-              className='hidden sm:visible sm:flex mr-1'
+              className='hidden sm:visible sm:flex mr-2'
               key={`crumb-${index}`}>
               <Link href='/' passHref>
                 <p aria-current='page'>{item}</p>
               </Link>
             </li>
           ) : (
-            <li className='flex mr-1' key={`crumb-${index}`}>
+            <li className='flex mr-2' key={`crumb-${index}`}>
               <Link href={`/${item}`} passHref>
-                <p>
+                <a>
                   <span className='sm:hidden mr-2'>{'<'}</span>
-                  <span className='mr-1'>{item}</span>
+                  <span className='mr-2'>{item}</span>
                   <span className='hidden sm:inline-block'>{'>'}</span>
-                </p>
+                </a>
               </Link>
             </li>
           )

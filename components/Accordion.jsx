@@ -45,8 +45,8 @@ const AccordionItem = ({ title, description }) => {
         className='w-full h-12 py-3 font-semibold text-sm border-t border-gray-200'
         onClick={toggleItem}>
         <h4 className='text-left flex justify-between'>
-          <span className='text-sm'>{title}</span>
-          <div className='accordion-arrow rotate-180'>
+          <span className='text-sm md:text-lg'>{title}</span>
+          <div className='accordion-arrow rotate-180 flex justify-center items-center'>
             <Image
               src='/accordion-arrow.svg'
               alt=''

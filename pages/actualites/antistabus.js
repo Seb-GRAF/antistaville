@@ -60,28 +60,30 @@ const Antistabus = () => {
       <Seo title={postTitle.title} description={postTitle.title} />
       <Breadcrumbs crumbs={['Actualités', postTitle.title]} />
 
-      <PostTitle postTitle={postTitle} />
-      <section className='flex flex-col gap-10'>
-        {posts.map((post, index) => (
-          <div key={`index-${index}`}>
-            <PostCard post={post}>
-              <p>
-                L’Antistabus, un véhicule transportant de{' '}
-                <StyledLink href={'/'}>nombreux jeux</StyledLink> adaptés aux
-                activités de plein air, sillonnera la ville d’Antistaville
-                pendant les mois de juillet et d’août afin de proposer des
-                moments ludiques pour les petits et les grands. Des{' '}
-                <StyledLink href={'/'}>chaises longues</StyledLink> et diverses
-                animations garantiront une ambiance conviviale.
-              </p>
-            </PostCard>
-          </div>
-        ))}
-      </section>
-      <section className='pb-6'>
-        <h3 className='mb-4 text-xl font-bold'>FAQ</h3>
-        <Accordion accordionItems={accordionItems} />
-      </section>
+      <div className='max-w-xl flex flex-col gap-6 lg:gap-10 lg:mt-10 '>
+        <PostTitle postTitle={postTitle} />
+        <section className='flex flex-col gap-10'>
+          {posts.map((post, index) => (
+            <div key={`index-${index}`}>
+              <PostCard post={post}>
+                <p>
+                  L’Antistabus, un véhicule transportant de{' '}
+                  <StyledLink href={'/'}>nombreux jeux</StyledLink> adaptés aux
+                  activités de plein air, sillonnera la ville d’Antistaville
+                  pendant les mois de juillet et d’août afin de proposer des
+                  moments ludiques pour les petits et les grands. Des{' '}
+                  <StyledLink href={'/'}>chaises longues</StyledLink> et
+                  diverses animations garantiront une ambiance conviviale.
+                </p>
+              </PostCard>
+            </div>
+          ))}
+        </section>
+        <section className='pb-6'>
+          <h3 className='mb-4 text-xl font-bold'>FAQ</h3>
+          <Accordion accordionItems={accordionItems} />
+        </section>
+      </div>
     </>
   )
 }

@@ -1,7 +1,8 @@
 import React from 'react'
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import Image from 'next/image'
 import Link from 'next/link'
+import Button from './Button'
 
 import gsap from 'gsap'
 
@@ -44,22 +45,40 @@ const HamburgerIcon = ({ isNavOpen, toggleNav }) => {
 }
 
 const Nav = () => {
+  const linkStyle =
+    'font-semibold lg:font-normal  mb-2 lg:mb-0 text-2xl lg:text-base border-t-2 lg:border-none py-2 lg:py-0 lg:hover:underline lg:hover:underline-offset-4'
   return (
-    <nav className='nav hidden w-full h-full overflow-hidden'>
-      <div className='w-full font-semibold mb-2 text-3xl border-y-2 py-2'>
-        <Link href='/'>Link</Link>
+    <nav className='nav hidden lg:flex lg:gap-4 lg:items-center lg:justify-center w-full lg:w-fit h-full overflow-hidden'>
+      <div className={linkStyle}>
+        <Link href='/'>Administration et autorités</Link>
       </div>
-      <p className='font-semibold mb-2 text-3xl border-b-2 py-2'>Link</p>
-      <p className='font-semibold mb-2 text-3xl border-b-2 py-2'>Link</p>
-      <p className='font-semibold mb-2 text-3xl border-b-2 py-2'>Link</p>
-      <p className='font-semibold mb-2 text-3xl border-b-2 py-2'>Link</p>
+      <div className={linkStyle}>
+        <Link href='/'>Vie pratique</Link>
+      </div>
+      <div className={linkStyle}>
+        <Link href='/'>Culture, sport et loisirs</Link>
+      </div>
+      <div className={linkStyle}>
+        <Link href='/'>Agenda</Link>
+      </div>
+      <div className={linkStyle}>
+        <Link href='/'>Actualités</Link>
+      </div>
+      <div className={`lg:hidden ${linkStyle}`}>
+        <Link href='/'>Guichet</Link>
+      </div>
+      <div className='hidden lg:inline-block'>
+        <Button>Guichet</Button>
+      </div>
     </nav>
   )
 }
 
 const Search = () => {
   return (
-    <form action='/' className='hidden search w-full h-full'>
+    <form
+      action='/'
+      className='hidden lg:hidden search w-full h-full overflow-hidden'>
       <input
         type='text'
         name='search'
@@ -127,9 +146,25 @@ const Header = () => {
     setIsSearchOpen(!isSearchOpen)
   }
 
+  useEffect(() => {
+    const onResize = () => {
+      if (window.innerWidth > 1024) {
+        collapseHeader()
+        setIsNavOpen(false)
+        setIsSearchOpen(false)
+      }
+    }
+
+    window.addEventListener('resize', onResize)
+
+    return () => {
+      window.removeEventListener('resize', onResize)
+    }
+  }, [])
+
   return (
-    <header className='header h-16 overflow-hidden px-4'>
-      <div className='flex justify-between '>
+    <header className='flex flex-col lg:flex-row items-between justify-center lg:justify-between header w-full max-w-6xl h-16 overflow-hidden px-4'>
+      <div className='flex justify-between items-center'>
         {/* LOGO */}
         <div className='flex items-center'>
           <h1 className='sr-only'>Antistaville</h1>
@@ -142,11 +177,12 @@ const Header = () => {
         </div>
 
         {/* MOBILE NAV BUTTONS */}
-        <div className='flex items-center h-16 sm:hidden'>
+        <div className='flex items-center h-16 lg:hidden'>
           <SearchIcon isSearchOpen={isSearchOpen} toggleSearch={toggleSearch} />
           <HamburgerIcon isNavOpen={isNavOpen} toggleNav={toggleNav} />
         </div>
       </div>
+
       <Search />
       <Nav />
     </header>
